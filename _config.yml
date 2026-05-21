@@ -1,0 +1,7 @@
+title: Co-Kitchen
+description: Inventario de cocina compartido por grupos
+theme: jekyll-theme-minimal
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
