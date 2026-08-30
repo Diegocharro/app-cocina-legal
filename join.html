@@ -1,0 +1,153 @@
+---
+permalink: /join/
+title: Unirse a un espacio
+---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Co-Kitchen — Unirse a un espacio</title>
+<style>
+  :root {
+    --cream: #fbfaf6;
+    --white: #ffffff;
+    --ink: #1a1a17;
+    --ink-soft: #4a4a42;
+    --muted: #8a8a7e;
+    --line: #e6e3da;
+    --olive: #3a5c4a;
+    --terracotta: #d97757;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 32px 18px 56px;
+  }
+  main { width: 100%; max-width: 420px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.4px; }
+  .sub { color: var(--ink-soft); font-size: 15px; margin: 0 0 22px; }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: var(--olive);
+    font-weight: 600;
+    margin: 10px 0 0;
+    word-break: break-all;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px 16px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--cream); }
+  .btn-secondary { background: var(--white); color: var(--ink); border-color: var(--line); }
+  ol { padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
+  ol li { margin-bottom: 8px; }
+  .steps-title {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 26px 0 8px;
+  }
+  .foot { font-size: 12px; color: var(--muted); text-align: center; margin-top: 26px; }
+  .foot a { color: var(--muted); }
+  strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Te han invitado a Co-Kitchen</h1>
+  <p class="sub" id="intro">Este es el código para entrar en el espacio compartido.</p>
+
+  <div class="card">
+    <p class="label">Código de invitación</p>
+    <p class="code" id="code">········</p>
+  </div>
+
+  <a class="btn btn-primary" id="open" href="#">Abrir en Co-Kitchen</a>
+  <button class="btn btn-secondary" id="copy" type="button">Copiar código</button>
+
+  <p class="steps-title">Si el botón no hace nada</p>
+  <ol>
+    <li>Instala Co-Kitchen en el móvil y crea tu cuenta.</li>
+    <li>Dentro de la app, entra en <strong>Mis espacios</strong>.</li>
+    <li>Pulsa <strong>Unirme con código</strong>, escribe el código de arriba y listo.</li>
+  </ol>
+
+  <p class="foot">
+    Co-Kitchen · <a href="../privacy/">Privacidad</a> · <a href="../terms/">Términos</a>
+  </p>
+</main>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var raw = (params.get('code') || '').trim().toUpperCase();
+    var code = /^[A-Z0-9]{6,12}$/.test(raw) ? raw : null;
+    var codeEl = document.getElementById('code');
+    var openEl = document.getElementById('open');
+    var copyEl = document.getElementById('copy');
+
+    if (code) {
+      codeEl.textContent = code;
+      openEl.href = 'appcocina://join?code=' + encodeURIComponent(code);
+    } else {
+      codeEl.textContent = 'sin código';
+      document.getElementById('intro').textContent =
+        'Al enlace le falta el código. Pide a quien te invitó que lo comparta otra vez desde la app.';
+      openEl.href = 'appcocina://join';
+      copyEl.disabled = true;
+    }
+
+    copyEl.addEventListener('click', function () {
+      if (!code) return;
+      var done = function () {
+        copyEl.textContent = 'Copiado';
+        setTimeout(function () { copyEl.textContent = 'Copiar código'; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(done, function () {});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  })();
+</script>
+</body>
+</html>
