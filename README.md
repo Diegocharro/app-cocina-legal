@@ -1,11 +1,14 @@
-# Co-Kitchen — Documentos legales
+# Co-Kitchen — documentos legales (MUDADO)
 
-Repositorio público que aloja los documentos legales de la app Co-Kitchen:
+Este repositorio ya no aloja la web. Todo vive ahora en la organización:
 
-- [Política de Privacidad](./PRIVACY.md) — `https://diegocharro.github.io/app-cocina-legal/privacy/`
-- [Términos y Condiciones](./TERMS.md) — `https://diegocharro.github.io/app-cocina-legal/terms/`
+**https://co-kitchen.github.io/** — repo [`Co-Kitchen/co-kitchen.github.io`](https://github.com/Co-Kitchen/co-kitchen.github.io)
 
-Servido vía GitHub Pages desde la rama `main`.
+Aquí solo quedan redirecciones (`/`, `/privacy/`, `/terms/`, `/join/`), para no
+romper los enlaces ya repartidos: invitaciones enviadas por WhatsApp, la URL de
+privacidad que consta en la ficha de la tienda y las versiones de la app
+anteriores a la 1.2.0. **No borrar este repositorio** mientras esos enlaces
+sigan por ahí.
 
 ## Contacto
 

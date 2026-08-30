@@ -4,17 +4,10 @@ title: Co-Kitchen
 permalink: /
 ---
 
+<meta http-equiv="refresh" content="0; url=https://co-kitchen.github.io/">
+<link rel="canonical" href="https://co-kitchen.github.io/">
+<script>location.replace('https://co-kitchen.github.io/');</script>
+
 # Co-Kitchen
 
-Aplicación móvil de inventario de cocina compartido por grupos (familia, piso, equipo), con entrada por voz e IA y escaneo de tickets de compra.
-
-## Documentos legales
-
-- [Política de Privacidad](./privacy/)
-- [Términos y Condiciones](./terms/)
-
-## Contacto
-
-- **Email:** bluedebug.contact@gmail.com
-- **Responsable:** Diego Charro
-- **Jurisdicción:** España
+Esta página se ha mudado a [https://co-kitchen.github.io/](https://co-kitchen.github.io/).
